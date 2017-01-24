@@ -1,0 +1,909 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2017-01-24 Tue 21:27 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>BIN505 F16 Mini-Project 1 Solution</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Aybar C. Acar" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">BIN505 F16 Mini-Project 1 Solution</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org8bb458c">1. Preamble</a></li>
+<li><a href="#org8f6a57b">2. Model</a>
+<ul>
+<li><a href="#orgc8e770e">2.1. Constants</a>
+<ul>
+<li><a href="#org4c1310a">2.1.1. IDs</a></li>
+<li><a href="#orga030e23">2.1.2. Parameters</a></li>
+</ul>
+</li>
+<li><a href="#org25851d4">2.2. Rules</a>
+<ul>
+<li><a href="#orgbd0f4bb">2.2.1. DG</a></li>
+<li><a href="#org1275a40">2.2.2. PLC</a></li>
+<li><a href="#orge69000c">2.2.3. R<sub>APLC</sub></a></li>
+<li><a href="#orgec10d9c">2.2.4. R<sub>PKC</sub></a></li>
+<li><a href="#org599bb27">2.2.5. R<sub>G<sub>alpha</sub> GTP</sub></a></li>
+<li><a href="#orge7cf38e">2.2.6. R<sub>DG</sub></a></li>
+<li><a href="#orgbeeab00">2.2.7. R<sub>IP<sub>3</sub></sub></a></li>
+<li><a href="#org2f0b1c8">2.2.8. R<sub>Cyt1</sub></a></li>
+<li><a href="#orgbe769dc">2.2.9. R<sub>Cyt2</sub></a></li>
+<li><a href="#orgd4d623b">2.2.10. R<sub>ER</sub></a></li>
+</ul>
+</li>
+<li><a href="#orgbc80319">2.3. Reactions</a>
+<ul>
+<li><a href="#org63f432b">2.3.1. Reaction 1</a></li>
+<li><a href="#org49a9308">2.3.2. Reaction 2</a></li>
+<li><a href="#org6bdfa5b">2.3.3. Reaction 3</a></li>
+<li><a href="#org9169a3f">2.3.4. Reaction 4</a></li>
+<li><a href="#orge949406">2.3.5. Reaction 5</a></li>
+<li><a href="#org11a1e2a">2.3.6. Reaction 6</a></li>
+<li><a href="#orgbb5cd43">2.3.7. Reaction 7</a></li>
+<li><a href="#orgb61307f">2.3.8. Reaction 8</a></li>
+<li><a href="#orgc85c667">2.3.9. Reaction 9</a></li>
+<li><a href="#org93af595">2.3.10. Reaction 10</a></li>
+<li><a href="#orgd8634b6">2.3.11. Reaction 11</a></li>
+</ul>
+</li>
+<li><a href="#orgd87d063">2.4. ODEs</a>
+<ul>
+<li><a href="#org3296e27">2.4.1. Equation System</a></li>
+<li><a href="#org426a5ee">2.4.2. Solver</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org486232d">3. Part I Solution</a>
+<ul>
+<li><a href="#org8ac1a91">3.1. Plot</a></li>
+</ul>
+</li>
+<li><a href="#org5a5cc22">4. Part II Solution</a>
+<ul>
+<li><a href="#org634a9bb">4.1. Plot</a></li>
+<li><a href="#org93d6f4f">4.2. Discussion</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org8bb458c" class="outline-2">
+<h2 id="org8bb458c"><span class="section-number-2">1</span> Preamble</h2>
+<div class="outline-text-2" id="text-1">
+<div class="org-src-container">
+<pre class="src src-ipython"><span style="color: #0000FF;">import</span> scipy.integrate <span style="color: #0000FF;">as</span> integrate
+<span style="color: #0000FF;">from</span> scipy.integrate <span style="color: #0000FF;">import</span> quad
+<span style="color: #0000FF;">import</span> matplotlib.pyplot <span style="color: #0000FF;">as</span> pyplot
+<span style="color: #0000FF;">import</span> numpy <span style="color: #0000FF;">as</span> numpy
+%matplotlib inline
+%config <span style="color: #BA36A5;">InlineBackend.figure_format</span> = <span style="color: #008000;">'png'</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8f6a57b" class="outline-2">
+<h2 id="org8f6a57b"><span class="section-number-2">2</span> Model</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-orgc8e770e" class="outline-3">
+<h3 id="orgc8e770e"><span class="section-number-3">2.1</span> Constants</h3>
+<div class="outline-text-3" id="text-2-1">
+</div><div id="outline-container-org4c1310a" class="outline-4">
+<h4 id="org4c1310a"><span class="section-number-4">2.1.1</span> IDs</h4>
+<div class="outline-text-4" id="text-2-1-1">
+<p>
+For easy access to the concentrations array. We use constants instead of having
+to remember the order of the species in the array.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython"><span style="color: #BA36A5;">GALPHA_GTP</span> = <span style="color: #D0372D;">0</span>
+<span style="color: #BA36A5;">APLC</span>       = <span style="color: #D0372D;">1</span>
+<span style="color: #BA36A5;">IP3</span>        = <span style="color: #D0372D;">2</span>
+<span style="color: #BA36A5;">CA_ER</span>      = <span style="color: #D0372D;">3</span>
+<span style="color: #BA36A5;">CA_CYT</span>     = <span style="color: #D0372D;">4</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga030e23" class="outline-4">
+<h4 id="orga030e23"><span class="section-number-4">2.1.2</span> Parameters</h4>
+<div class="outline-text-4" id="text-2-1-2">
+<p>
+Constants given in the paper. 
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython"><span style="color: #BA36A5;">cplc_total</span> = <span style="color: #D0372D;">2</span>.<span style="color: #D0372D;">0</span>
+<span style="color: #BA36A5;">Kp</span>         = <span style="color: #D0372D;">4</span>.<span style="color: #D0372D;">0</span>
+<span style="color: #BA36A5;">Kd</span>         = <span style="color: #D0372D;">10</span>.<span style="color: #D0372D;">0</span>
+<span style="color: #BA36A5;">Kr</span>         = <span style="color: #D0372D;">200</span>.<span style="color: #D0372D;">0</span>
+<span style="color: #BA36A5;">n</span>          = <span style="color: #D0372D;">4</span>.<span style="color: #D0372D;">0</span>
+<span style="color: #BA36A5;">Kg</span>         = <span style="color: #D0372D;">25</span>.<span style="color: #D0372D;">0</span>
+<span style="color: #BA36A5;">m</span>          = <span style="color: #D0372D;">2</span>.<span style="color: #D0372D;">0</span>
+<span style="color: #BA36A5;">Ks</span>         = <span style="color: #D0372D;">25</span>.<span style="color: #D0372D;">0</span>
+<span style="color: #BA36A5;">Kc1</span>        = <span style="color: #D0372D;">1000</span>.<span style="color: #D0372D;">0</span>
+<span style="color: #BA36A5;">Kc2</span>        = <span style="color: #D0372D;">2000</span>.<span style="color: #D0372D;">0</span>
+<span style="color: #BA36A5;">w</span>          = <span style="color: #D0372D;">3</span>.<span style="color: #D0372D;">0</span>
+<span style="color: #BA36A5;">Ker</span>        = <span style="color: #D0372D;">75</span>.<span style="color: #D0372D;">0</span>
+<span style="color: #BA36A5;">k0</span>         = <span style="color: #D0372D;">0</span>.<span style="color: #D0372D;">1</span>
+<span style="color: #BA36A5;">k1</span>         = <span style="color: #D0372D;">3</span>.<span style="color: #D0372D;">4</span>
+<span style="color: #BA36A5;">k2</span>         = <span style="color: #D0372D;">4</span>.<span style="color: #D0372D;">0</span>
+<span style="color: #BA36A5;">k3</span>         = <span style="color: #D0372D;">4</span>.<span style="color: #D0372D;">5</span>
+<span style="color: #BA36A5;">k4</span>         = <span style="color: #D0372D;">1</span>.<span style="color: #D0372D;">2</span>
+<span style="color: #BA36A5;">k5</span>         = <span style="color: #D0372D;">0</span>.<span style="color: #D0372D;">12</span>
+<span style="color: #BA36A5;">k6</span>         = <span style="color: #D0372D;">14</span>.<span style="color: #D0372D;">0</span>
+<span style="color: #BA36A5;">k7</span>         = <span style="color: #D0372D;">2</span>.<span style="color: #D0372D;">0</span>
+<span style="color: #BA36A5;">k8</span>         = <span style="color: #D0372D;">10500</span>.<span style="color: #D0372D;">0</span>
+<span style="color: #BA36A5;">k9</span>         = <span style="color: #D0372D;">600</span>.<span style="color: #D0372D;">0</span>
+<span style="color: #BA36A5;">k10</span>        = <span style="color: #D0372D;">3000</span>.<span style="color: #D0372D;">0</span>
+<span style="color: #BA36A5;">k11</span>        = <span style="color: #D0372D;">260</span>.<span style="color: #D0372D;">0</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org25851d4" class="outline-3">
+<h3 id="org25851d4"><span class="section-number-3">2.2</span> Rules</h3>
+<div class="outline-text-3" id="text-2-2">
+</div><div id="outline-container-orgbd0f4bb" class="outline-4">
+<h4 id="orgbd0f4bb"><span class="section-number-4">2.2.1</span> DG</h4>
+<div class="outline-text-4" id="text-2-2-1">
+<p>
+DG concentration is assumed to be equal to IP<sub>3</sub>, always.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython"><span style="color: #0000FF;">def</span> <span style="color: #006699;">dg</span><span style="color: #707183;">(</span>concentrations<span style="color: #707183;">)</span>:
+    <span style="color: #0000FF;">return</span> concentrations<span style="color: #707183;">[</span>IP3<span style="color: #707183;">]</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1275a40" class="outline-4">
+<h4 id="org1275a40"><span class="section-number-4">2.2.2</span> PLC</h4>
+<div class="outline-text-4" id="text-2-2-2">
+<p>
+Total PLC concentration (active + not) is constant
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython"><span style="color: #0000FF;">def</span> <span style="color: #006699;">plc</span><span style="color: #707183;">(</span>concentrations<span style="color: #707183;">)</span>:
+    <span style="color: #0000FF;">return</span> cplc_total - concentrations<span style="color: #707183;">[</span>APLC<span style="color: #707183;">]</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge69000c" class="outline-4">
+<h4 id="orge69000c"><span class="section-number-4">2.2.3</span> R<sub>APLC</sub></h4>
+<div class="outline-text-4" id="text-2-2-3">
+<p>
+APLC catalyzes the dephosphorylation of \(G_{\alpha}-GTP\)
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython"><span style="color: #0000FF;">def</span> <span style="color: #006699;">R_aplc</span><span style="color: #707183;">(</span>concentrations<span style="color: #707183;">)</span>:
+    <span style="color: #0000FF;">return</span> <span style="color: #707183;">(</span>concentrations<span style="color: #7388D6;">[</span>APLC<span style="color: #7388D6;">]</span><span style="color: #707183;">)</span> / <span style="color: #707183;">(</span>Kp + concentrations<span style="color: #7388D6;">[</span>APLC<span style="color: #7388D6;">]</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgec10d9c" class="outline-4">
+<h4 id="orgec10d9c"><span class="section-number-4">2.2.4</span> R<sub>PKC</sub></h4>
+<div class="outline-text-4" id="text-2-2-4">
+<p>
+\(G_{\alpha}-GTP\) decrease due to PKC receptors
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython"><span style="color: #0000FF;">def</span> <span style="color: #006699;">R_pkc</span><span style="color: #707183;">(</span>concentrations<span style="color: #707183;">)</span>:
+    <span style="color: #0000FF;">return</span> <span style="color: #707183;">(</span><span style="color: #7388D6;">(</span><span style="color: #909183;">(</span>dg<span style="color: #709870;">(</span>concentrations<span style="color: #709870;">)</span>/<span style="color: #709870;">(</span>Kd + dg<span style="color: #907373;">(</span>concentrations<span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span> *concentrations<span style="color: #909183;">[</span>CA_CYT<span style="color: #909183;">]</span> <span style="color: #7388D6;">)</span>/<span style="color: #7388D6;">(</span>Kr + concentrations<span style="color: #909183;">[</span>CA_CYT<span style="color: #909183;">]</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org599bb27" class="outline-4">
+<h4 id="org599bb27"><span class="section-number-4">2.2.5</span> R<sub>G<sub>alpha</sub> GTP</sub></h4>
+<div class="outline-text-4" id="text-2-2-5">
+<p>
+\(G_{\alpha}GTP\) effect on PLC activation
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython"><span style="color: #0000FF;">def</span> <span style="color: #006699;">R_galpha_gtp</span><span style="color: #707183;">(</span>concentrations<span style="color: #707183;">)</span>:
+    <span style="color: #0000FF;">return</span> <span style="color: #707183;">(</span>concentrations<span style="color: #7388D6;">[</span>GALPHA_GTP<span style="color: #7388D6;">]</span> ** n<span style="color: #707183;">)</span>/<span style="color: #707183;">(</span><span style="color: #7388D6;">(</span>Kg ** n<span style="color: #7388D6;">)</span> + <span style="color: #7388D6;">(</span>concentrations<span style="color: #909183;">[</span>GALPHA_GTP<span style="color: #909183;">]</span> ** n<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge7cf38e" class="outline-4">
+<h4 id="orge7cf38e"><span class="section-number-4">2.2.6</span> R<sub>DG</sub></h4>
+<div class="outline-text-4" id="text-2-2-6">
+<p>
+DG effect on PLC activation
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython"><span style="color: #0000FF;">def</span> <span style="color: #006699;">R_dg</span><span style="color: #707183;">(</span>concentrations<span style="color: #707183;">)</span>:
+    <span style="color: #0000FF;">return</span> <span style="color: #707183;">(</span>dg<span style="color: #7388D6;">(</span>concentrations<span style="color: #7388D6;">)</span> ** m<span style="color: #707183;">)</span> / <span style="color: #707183;">(</span><span style="color: #7388D6;">(</span>Kd ** m<span style="color: #7388D6;">)</span> + <span style="color: #7388D6;">(</span>dg<span style="color: #909183;">(</span>concentrations<span style="color: #909183;">)</span> ** m<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgbeeab00" class="outline-4">
+<h4 id="orgbeeab00"><span class="section-number-4">2.2.7</span> R<sub>IP<sub>3</sub></sub></h4>
+<div class="outline-text-4" id="text-2-2-7">
+<p>
+IP<sub>3</sub> effect on ER membrane (Ca release)
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython"><span style="color: #0000FF;">def</span> <span style="color: #006699;">R_ip3</span><span style="color: #707183;">(</span>concentrations<span style="color: #707183;">)</span>:
+    <span style="color: #0000FF;">return</span> <span style="color: #707183;">(</span> concentrations<span style="color: #7388D6;">[</span>IP3<span style="color: #7388D6;">]</span> ** <span style="color: #D0372D;">3</span> <span style="color: #707183;">)</span> / <span style="color: #707183;">(</span> <span style="color: #7388D6;">(</span> Ks ** <span style="color: #D0372D;">3</span> <span style="color: #7388D6;">)</span> + <span style="color: #7388D6;">(</span> concentrations<span style="color: #909183;">[</span>IP3<span style="color: #909183;">]</span> ** <span style="color: #D0372D;">3</span> <span style="color: #7388D6;">)</span> <span style="color: #707183;">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2f0b1c8" class="outline-4">
+<h4 id="org2f0b1c8"><span class="section-number-4">2.2.8</span> R<sub>Cyt1</sub></h4>
+<div class="outline-text-4" id="text-2-2-8">
+<div class="org-src-container">
+<pre class="src src-ipython"><span style="color: #0000FF;">def</span> <span style="color: #006699;">R_cyt1</span><span style="color: #707183;">(</span>concentrations<span style="color: #707183;">)</span>:
+    <span style="color: #0000FF;">return</span> concentrations<span style="color: #707183;">[</span>CA_CYT<span style="color: #707183;">]</span> / <span style="color: #707183;">(</span>Kc1 + concentrations<span style="color: #7388D6;">[</span>CA_CYT<span style="color: #7388D6;">]</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgbe769dc" class="outline-4">
+<h4 id="orgbe769dc"><span class="section-number-4">2.2.9</span> R<sub>Cyt2</sub></h4>
+<div class="outline-text-4" id="text-2-2-9">
+<div class="org-src-container">
+<pre class="src src-ipython"><span style="color: #0000FF;">def</span> <span style="color: #006699;">R_cyt2</span><span style="color: #707183;">(</span>concentrations<span style="color: #707183;">)</span>:
+    <span style="color: #0000FF;">return</span> concentrations<span style="color: #707183;">[</span>CA_CYT<span style="color: #707183;">]</span> / <span style="color: #707183;">(</span>Kc2 + concentrations<span style="color: #7388D6;">[</span>CA_CYT<span style="color: #7388D6;">]</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd4d623b" class="outline-4">
+<h4 id="orgd4d623b"><span class="section-number-4">2.2.10</span> R<sub>ER</sub></h4>
+<div class="outline-text-4" id="text-2-2-10">
+<div class="org-src-container">
+<pre class="src src-ipython"><span style="color: #0000FF;">def</span> <span style="color: #006699;">R_er</span><span style="color: #707183;">(</span>concentrations<span style="color: #707183;">)</span>:
+    <span style="color: #0000FF;">return</span> <span style="color: #707183;">(</span>concentrations<span style="color: #7388D6;">[</span>CA_ER<span style="color: #7388D6;">]</span> ** w<span style="color: #707183;">)</span> / <span style="color: #707183;">(</span> <span style="color: #7388D6;">(</span> Ker ** w <span style="color: #7388D6;">)</span> + <span style="color: #7388D6;">(</span> concentrations<span style="color: #909183;">[</span>CA_ER<span style="color: #909183;">]</span> ** w <span style="color: #7388D6;">)</span> <span style="color: #707183;">)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgbc80319" class="outline-3">
+<h3 id="orgbc80319"><span class="section-number-3">2.3</span> Reactions</h3>
+<div class="outline-text-3" id="text-2-3">
+</div><div id="outline-container-org63f432b" class="outline-4">
+<h4 id="org63f432b"><span class="section-number-4">2.3.1</span> Reaction 1</h4>
+<div class="outline-text-4" id="text-2-3-1">
+<p>
+Spontaneous formation of \(G_{\alpha}GTP\). Constant (zero-order) rate law reaction.
+</p>
+
+\begin{equation}
+\emptyset \xrightarrow{k_0} G_{\alpha}GTP
+\end{equation}
+</div>
+
+<ol class="org-ol"><li><a id="org998b856"></a>Kinetic law (v1)<br  /><div class="outline-text-5" id="text-2-3-1-1">
+<div class="org-src-container">
+<pre class="src src-ipython"><span style="color: #0000FF;">def</span> <span style="color: #006699;">v1</span><span style="color: #707183;">(</span>concentrations<span style="color: #707183;">)</span>:
+    <span style="color: #0000FF;">return</span> k0
+</pre>
+</div>
+</div></li></ol>
+</div>
+
+<div id="outline-container-org49a9308" class="outline-4">
+<h4 id="org49a9308"><span class="section-number-4">2.3.2</span> Reaction 2</h4>
+<div class="outline-text-4" id="text-2-3-2">
+<p>
+The autocatalytic part of the formation of \(G_{\alpha}GTP\) as explained in the paper (see pg.511, col. 2; and Fig. 1)
+</p>
+
+\begin{equation}
+G_{\alpha}GDP \xrightarrow{k_1} G_{\alpha}GTP
+\end{equation}
+</div>
+
+<ol class="org-ol"><li><a id="org685889a"></a>Kinetic law (v2)<br  /><div class="outline-text-5" id="text-2-3-2-1">
+<div class="org-src-container">
+<pre class="src src-ipython"><span style="color: #0000FF;">def</span> <span style="color: #006699;">v2</span><span style="color: #707183;">(</span>concentrations<span style="color: #707183;">)</span>:
+    <span style="color: #0000FF;">return</span> k1*concentrations<span style="color: #707183;">[</span>GALPHA_GTP<span style="color: #707183;">]</span>
+</pre>
+</div>
+</div></li></ol>
+</div>
+
+<div id="outline-container-org6bdfa5b" class="outline-4">
+<h4 id="org6bdfa5b"><span class="section-number-4">2.3.3</span> Reaction 3</h4>
+<div class="outline-text-4" id="text-2-3-3">
+<p>
+The hydrolysis of \(G_{\alpha}GTP\) to \(G_{\alpha}GDP\), accelerated by APLC
+</p>
+
+\begin{equation}
+G_{\alpha}GTP \xrightarrow[APLC]{k_2} G_{\alpha}GDP
+\end{equation}
+</div>
+
+<ol class="org-ol"><li><a id="org41c03e7"></a>Kinetic law (v3)<br  /><div class="outline-text-5" id="text-2-3-3-1">
+<div class="org-src-container">
+<pre class="src src-ipython"><span style="color: #0000FF;">def</span> <span style="color: #006699;">v3</span><span style="color: #707183;">(</span>concentrations<span style="color: #707183;">)</span>:
+    <span style="color: #0000FF;">return</span> k2*R_aplc<span style="color: #707183;">(</span>concentrations<span style="color: #707183;">)</span>*concentrations<span style="color: #707183;">[</span>GALPHA_GTP<span style="color: #707183;">]</span>
+</pre>
+</div>
+</div></li></ol>
+</div>
+
+<div id="outline-container-org9169a3f" class="outline-4">
+<h4 id="org9169a3f"><span class="section-number-4">2.3.4</span> Reaction 4</h4>
+<div class="outline-text-4" id="text-2-3-4">
+<p>
+Further phosphorylation of \(G_{\alpha}GTP\), accelerated by PKC
+</p>
+
+\begin{equation}
+G_{\alpha}GTP \xrightarrow[PKC]{k_3} G_{\alpha}'
+\end{equation}
+</div>
+
+<ol class="org-ol"><li><a id="org4635d0c"></a>Kinetic law (v4)<br  /><div class="outline-text-5" id="text-2-3-4-1">
+<div class="org-src-container">
+<pre class="src src-ipython"><span style="color: #0000FF;">def</span> <span style="color: #006699;">v4</span><span style="color: #707183;">(</span>concentrations<span style="color: #707183;">)</span>:
+    <span style="color: #0000FF;">return</span> k3*R_pkc<span style="color: #707183;">(</span>concentrations<span style="color: #707183;">)</span>*concentrations<span style="color: #707183;">[</span>GALPHA_GTP<span style="color: #707183;">]</span>
+</pre>
+</div>
+</div></li></ol>
+</div>
+
+<div id="outline-container-orge949406" class="outline-4">
+<h4 id="orge949406"><span class="section-number-4">2.3.5</span> Reaction 5</h4>
+<div class="outline-text-4" id="text-2-3-5">
+<p>
+Activation of PLC, determined by active G-proteins and DG.
+</p>
+
+\begin{equation}
+PLC \xrightarrow[G_{\alpha}GTP, DG]{k_4} APLC
+\end{equation}
+</div>
+
+<ol class="org-ol"><li><a id="org740c3aa"></a>Kinetic Law (v5)<br  /><div class="outline-text-5" id="text-2-3-5-1">
+<div class="org-src-container">
+<pre class="src src-ipython"><span style="color: #0000FF;">def</span> <span style="color: #006699;">v5</span><span style="color: #707183;">(</span>concentrations<span style="color: #707183;">)</span>:
+    <span style="color: #0000FF;">return</span> k4*R_dg<span style="color: #707183;">(</span>concentrations<span style="color: #707183;">)</span>*R_galpha_gtp<span style="color: #707183;">(</span>concentrations<span style="color: #707183;">)</span>*plc<span style="color: #707183;">(</span>concentrations<span style="color: #707183;">)</span>
+</pre>
+</div>
+</div></li></ol>
+</div>
+
+<div id="outline-container-org11a1e2a" class="outline-4">
+<h4 id="org11a1e2a"><span class="section-number-4">2.3.6</span> Reaction 6</h4>
+<div class="outline-text-4" id="text-2-3-6">
+<p>
+Spontaneous deactivation of APLC
+</p>
+
+\begin{equation}
+APLC \xrightarrow{k_5} PLC
+\end{equation}
+</div>
+
+<ol class="org-ol"><li><a id="orgf2492ba"></a>Kinetic law (v6)<br  /><div class="outline-text-5" id="text-2-3-6-1">
+<div class="org-src-container">
+<pre class="src src-ipython"><span style="color: #0000FF;">def</span> <span style="color: #006699;">v6</span><span style="color: #707183;">(</span>concentrations<span style="color: #707183;">)</span>:
+    <span style="color: #0000FF;">return</span> k5*concentrations<span style="color: #707183;">[</span>APLC<span style="color: #707183;">]</span>
+</pre>
+</div>
+</div></li></ol>
+</div>
+
+<div id="outline-container-orgbb5cd43" class="outline-4">
+<h4 id="orgbb5cd43"><span class="section-number-4">2.3.7</span> Reaction 7</h4>
+<div class="outline-text-4" id="text-2-3-7">
+<p>
+Formation of \(IP_3\) by hydrolysis of \(PIP_2\) controlled by active PLC (APLC) 
+</p>
+\begin{equation}
+PIP_2 \xrightarrow[APLC]{k_6} IP_3
+\end{equation}
+</div>
+
+<ol class="org-ol"><li><a id="orgcefb63d"></a>Kinetic law (v7)<br  /><div class="outline-text-5" id="text-2-3-7-1">
+<div class="org-src-container">
+<pre class="src src-ipython"><span style="color: #0000FF;">def</span> <span style="color: #006699;">v7</span><span style="color: #707183;">(</span>concentrations<span style="color: #707183;">)</span>:
+    <span style="color: #0000FF;">return</span> k6*concentrations<span style="color: #707183;">[</span>APLC<span style="color: #707183;">]</span>
+</pre>
+</div>
+</div></li></ol>
+</div>
+
+<div id="outline-container-orgb61307f" class="outline-4">
+<h4 id="orgb61307f"><span class="section-number-4">2.3.8</span> Reaction 8</h4>
+<div class="outline-text-4" id="text-2-3-8">
+<p>
+Metabolization of \(IP_3\) to other, irrelevant products (e.g. IP<sub>2</sub>, IP<sub>4</sub>)
+</p>
+\begin{equation}
+IP_3 \xrightarrow{k_7} \emptyset
+\end{equation}
+</div>
+
+<ol class="org-ol"><li><a id="orgb5d818c"></a>Kinetic law (v8)<br  /><div class="outline-text-5" id="text-2-3-8-1">
+<div class="org-src-container">
+<pre class="src src-ipython"><span style="color: #0000FF;">def</span> <span style="color: #006699;">v8</span><span style="color: #707183;">(</span>concentrations<span style="color: #707183;">)</span>:
+    <span style="color: #0000FF;">return</span> k7*concentrations<span style="color: #707183;">[</span>IP3<span style="color: #707183;">]</span>
+</pre>
+</div>
+</div></li></ol>
+</div>
+
+<div id="outline-container-orgc85c667" class="outline-4">
+<h4 id="orgc85c667"><span class="section-number-4">2.3.9</span> Reaction 9</h4>
+<div class="outline-text-4" id="text-2-3-9">
+<p>
+The two way regulation of free \(Ca^{2+}\) between the ER and the cytoplasm,
+through and equilibrium of IP3 mediated calcium channel and ATP dependent ion pumps.
+\[\require{mhchem}\]
+</p>
+ \begin{equation}
+ \ce{Ca^{2+}_{Cyt} <=>[{k_9}][{k_8, IP_3}] Ca^{2+}_{ER}}
+\end{equation}
+</div>
+
+<ol class="org-ol"><li><a id="org3bf93b1"></a>Kinetic law (v9)<br  /><div class="outline-text-5" id="text-2-3-9-1">
+<div class="org-src-container">
+<pre class="src src-ipython"><span style="color: #0000FF;">def</span> <span style="color: #006699;">v9</span><span style="color: #707183;">(</span>concentrations<span style="color: #707183;">)</span>:
+    <span style="color: #0000FF;">return</span>  <span style="color: #707183;">(</span>k8*R_ip3<span style="color: #7388D6;">(</span>concentrations<span style="color: #7388D6;">)</span>*R_er<span style="color: #7388D6;">(</span>concentrations<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span> - <span style="color: #707183;">(</span>k9*R_cyt1<span style="color: #7388D6;">(</span>concentrations<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+</div></li></ol>
+</div>
+
+<div id="outline-container-org93af595" class="outline-4">
+<h4 id="org93af595"><span class="section-number-4">2.3.10</span> Reaction 10</h4>
+<div class="outline-text-4" id="text-2-3-10">
+<p>
+Calcium loss to extracellular space
+</p>
+
+\begin{equation}
+ Ca^{2+}_{Cyt} \xrightarrow{k_{10}} \emptyset
+\end{equation}
+</div>
+
+<ol class="org-ol"><li><a id="orgfcfa0fd"></a>Kinetic law (v10)<br  /><div class="outline-text-5" id="text-2-3-10-1">
+<div class="org-src-container">
+<pre class="src src-ipython"><span style="color: #0000FF;">def</span> <span style="color: #006699;">v10</span><span style="color: #707183;">(</span>concentrations<span style="color: #707183;">)</span>:
+    <span style="color: #0000FF;">return</span> k10*R_cyt2<span style="color: #707183;">(</span>concentrations<span style="color: #707183;">)</span>
+</pre>
+</div>
+</div></li></ol>
+</div>
+
+<div id="outline-container-orgd8634b6" class="outline-4">
+<h4 id="orgd8634b6"><span class="section-number-4">2.3.11</span> Reaction 11</h4>
+<div class="outline-text-4" id="text-2-3-11">
+<p>
+Calcium gain from extracellular space
+</p>
+
+\begin{equation}
+\emptyset \xrightarrow{k_{11}} Ca^{2+}_{Cyt}
+\end{equation}
+</div>
+
+<ol class="org-ol"><li><a id="org87ef18b"></a>Kinetic law (v11)<br  /><div class="outline-text-5" id="text-2-3-11-1">
+<div class="org-src-container">
+<pre class="src src-ipython"><span style="color: #0000FF;">def</span> <span style="color: #006699;">v11</span><span style="color: #707183;">(</span>concentrations<span style="color: #707183;">)</span>:
+    <span style="color: #0000FF;">return</span> k11
+</pre>
+</div>
+</div></li></ol>
+</div>
+</div>
+
+<div id="outline-container-orgd87d063" class="outline-3">
+<h3 id="orgd87d063"><span class="section-number-3">2.4</span> ODEs</h3>
+<div class="outline-text-3" id="text-2-4">
+</div><div id="outline-container-org3296e27" class="outline-4">
+<h4 id="org3296e27"><span class="section-number-4">2.4.1</span> Equation System</h4>
+<div class="outline-text-4" id="text-2-4-1">
+<div class="org-src-container">
+<pre class="src src-ipython"><span style="color: #0000FF;">def</span> <span style="color: #006699;">ode_system</span><span style="color: #707183;">(</span>c, t<span style="color: #707183;">)</span>:
+    <span style="color: #0000FF;">return</span> <span style="color: #707183;">[</span>
+        v1<span style="color: #7388D6;">(</span>c<span style="color: #7388D6;">)</span> + v2<span style="color: #7388D6;">(</span>c<span style="color: #7388D6;">)</span> - v3<span style="color: #7388D6;">(</span>c<span style="color: #7388D6;">)</span> - v4<span style="color: #7388D6;">(</span>c<span style="color: #7388D6;">)</span>,                     <span style="color: #8D8D84;">#</span><span style="color: #8D8D84; font-style: italic;">dGALPHA_GTP/dt</span>
+        v5<span style="color: #7388D6;">(</span>c<span style="color: #7388D6;">)</span> - v6<span style="color: #7388D6;">(</span>c<span style="color: #7388D6;">)</span>,                                     <span style="color: #8D8D84;">#</span><span style="color: #8D8D84; font-style: italic;">dAPLC/dt</span>
+        v7<span style="color: #7388D6;">(</span>c<span style="color: #7388D6;">)</span> - v8<span style="color: #7388D6;">(</span>c<span style="color: #7388D6;">)</span>,                                     <span style="color: #8D8D84;">#</span><span style="color: #8D8D84; font-style: italic;">dIP3/dt</span>
+        -<span style="color: #D0372D;">0</span>.<span style="color: #D0372D;">001</span> * v9<span style="color: #7388D6;">(</span>c<span style="color: #7388D6;">)</span>,                                    <span style="color: #8D8D84;">#</span><span style="color: #8D8D84; font-style: italic;">dCA_ER/dt</span>
+        <span style="color: #7388D6;">(</span><span style="color: #D0372D;">0</span>.<span style="color: #D0372D;">01</span> * v9<span style="color: #909183;">(</span>c<span style="color: #909183;">)</span><span style="color: #7388D6;">)</span> + <span style="color: #7388D6;">(</span><span style="color: #D0372D;">0</span>.<span style="color: #D0372D;">05</span> * v11<span style="color: #909183;">(</span>c<span style="color: #909183;">)</span><span style="color: #7388D6;">)</span> - <span style="color: #7388D6;">(</span><span style="color: #D0372D;">0</span>.<span style="color: #D0372D;">05</span> * v10<span style="color: #909183;">(</span>c<span style="color: #909183;">)</span><span style="color: #7388D6;">)</span> <span style="color: #8D8D84;">#</span><span style="color: #8D8D84; font-style: italic;">dCA_CYT/dt</span>
+    <span style="color: #707183;">]</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org426a5ee" class="outline-4">
+<h4 id="org426a5ee"><span class="section-number-4">2.4.2</span> Solver</h4>
+<div class="outline-text-4" id="text-2-4-2">
+<div class="org-src-container">
+<pre class="src src-ipython"><span style="color: #BA36A5;">t</span> = numpy.linspace<span style="color: #707183;">(</span><span style="color: #D0372D;">0</span>,<span style="color: #D0372D;">700</span>,<span style="color: #D0372D;">10000</span><span style="color: #707183;">)</span>
+
+<span style="color: #0000FF;">def</span> <span style="color: #006699;">solver</span><span style="color: #707183;">()</span>:
+      <span style="color: #8D8D84;">#</span><span style="color: #8D8D84; font-style: italic;">Initial state</span>
+      <span style="color: #BA36A5;">conc0</span> = <span style="color: #707183;">[</span><span style="color: #D0372D;">1</span>.<span style="color: #D0372D;">0</span>,    <span style="color: #8D8D84;">#</span><span style="color: #8D8D84; font-style: italic;">GALPHA_GTP</span>
+               <span style="color: #D0372D;">0</span>.<span style="color: #D0372D;">9</span>*cplc_total,    <span style="color: #8D8D84;">#</span><span style="color: #8D8D84; font-style: italic;">APLC</span>
+               <span style="color: #D0372D;">1</span>.<span style="color: #D0372D;">0</span>,    <span style="color: #8D8D84;">#</span><span style="color: #8D8D84; font-style: italic;">IP3</span>
+               <span style="color: #D0372D;">1000</span>.<span style="color: #D0372D;">0</span>, <span style="color: #8D8D84;">#</span><span style="color: #8D8D84; font-style: italic;">CA_ER</span>
+               <span style="color: #D0372D;">200</span>.<span style="color: #D0372D;">0</span>  <span style="color: #8D8D84;">#</span><span style="color: #8D8D84; font-style: italic;">CA_Cyt</span>
+      <span style="color: #707183;">]</span>
+      <span style="color: #0000FF;">return</span> integrate.odeint<span style="color: #707183;">(</span>ode_system, conc0,t<span style="color: #707183;">)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org486232d" class="outline-2">
+<h2 id="org486232d"><span class="section-number-2">3</span> Part I Solution</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-org8ac1a91" class="outline-3">
+<h3 id="org8ac1a91"><span class="section-number-3">3.1</span> Plot</h3>
+<div class="outline-text-3" id="text-3-1">
+<div class="org-src-container">
+<pre class="src src-ipython"><span style="color: #BA36A5;">cplc_total</span> = <span style="color: #D0372D;">10</span>.<span style="color: #D0372D;">0</span>
+pyplot.figure<span style="color: #707183;">(</span>figsize=<span style="color: #7388D6;">(</span><span style="color: #D0372D;">10</span>,<span style="color: #D0372D;">10</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #BA36A5;">results</span> = solver<span style="color: #707183;">()</span>
+pyplot.plot<span style="color: #707183;">(</span>t, results<span style="color: #7388D6;">[</span>:,CA_CYT<span style="color: #7388D6;">]</span>,<span style="color: #008000;">'r'</span>,label=<span style="color: #008000;">'[CA_cyt]'</span><span style="color: #707183;">)</span>
+pyplot.plot<span style="color: #707183;">(</span>t, results<span style="color: #7388D6;">[</span>:,CA_ER<span style="color: #7388D6;">]</span>,<span style="color: #008000;">'b'</span>,label=<span style="color: #008000;">'[CA_ER]'</span><span style="color: #707183;">)</span>
+pyplot.title<span style="color: #707183;">(</span><span style="color: #008000;">"Part I Answer"</span><span style="color: #707183;">)</span>
+pyplot.legend<span style="color: #707183;">()</span>
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="part1_solution.png" alt="part1_solution.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5a5cc22" class="outline-2">
+<h2 id="org5a5cc22"><span class="section-number-2">4</span> Part II Solution</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-org634a9bb" class="outline-3">
+<h3 id="org634a9bb"><span class="section-number-3">4.1</span> Plot</h3>
+<div class="outline-text-3" id="text-4-1">
+<div class="org-src-container">
+<pre class="src src-ipython"><span style="color: #BA36A5;">subplot_number</span> = <span style="color: #D0372D;">0</span>
+<span style="color: #BA36A5;">values</span> = <span style="color: #707183;">[</span><span style="color: #D0372D;">0</span>.<span style="color: #D0372D;">5</span>, <span style="color: #D0372D;">1</span>.<span style="color: #D0372D;">0</span>, <span style="color: #D0372D;">2</span>.<span style="color: #D0372D;">0</span>, <span style="color: #D0372D;">2</span>.<span style="color: #D0372D;">5</span>, <span style="color: #D0372D;">3</span>.<span style="color: #D0372D;">0</span>, <span style="color: #D0372D;">5</span>.<span style="color: #D0372D;">0</span>, <span style="color: #D0372D;">7</span>.<span style="color: #D0372D;">0</span>, <span style="color: #D0372D;">20</span>.<span style="color: #D0372D;">0</span>, <span style="color: #D0372D;">50</span>.<span style="color: #D0372D;">0</span>, <span style="color: #D0372D;">100</span>.<span style="color: #D0372D;">0</span><span style="color: #707183;">]</span>
+pyplot.figure<span style="color: #707183;">(</span>figsize=<span style="color: #7388D6;">(</span><span style="color: #D0372D;">10</span>,<span style="color: #D0372D;">30</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #0000FF;">for</span> val <span style="color: #0000FF;">in</span> values:
+    <span style="color: #BA36A5;">subplot_number</span> += <span style="color: #D0372D;">1</span>
+    <span style="color: #BA36A5;">ncols</span> = <span style="color: #D0372D;">2</span>
+    <span style="color: #BA36A5;">nrows</span> = <span style="color: #006FE0;">len</span><span style="color: #707183;">(</span>values<span style="color: #707183;">)</span> // <span style="color: #D0372D;">2</span>
+    <span style="color: #BA36A5;">cplc_total</span> = val
+    <span style="color: #BA36A5;">results</span> = solver<span style="color: #707183;">()</span>
+    pyplot.subplot<span style="color: #707183;">(</span>nrows, ncols, subplot_number<span style="color: #707183;">)</span>
+    pyplot.plot<span style="color: #707183;">(</span>t, results<span style="color: #7388D6;">[</span>:,CA_CYT<span style="color: #7388D6;">]</span>,<span style="color: #008000;">'r'</span>,label=<span style="color: #008000;">'[CA_cyt]'</span><span style="color: #707183;">)</span>
+    pyplot.plot<span style="color: #707183;">(</span>t, results<span style="color: #7388D6;">[</span>:,CA_ER<span style="color: #7388D6;">]</span>,<span style="color: #008000;">'b'</span>,label=<span style="color: #008000;">'[CA_ER]'</span><span style="color: #707183;">)</span>
+    pyplot.title<span style="color: #707183;">(</span><span style="color: #008000;">"Cplc_total = {:.2f}"</span>.<span style="color: #006FE0;">format</span><span style="color: #7388D6;">(</span>val<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+    pyplot.legend<span style="color: #707183;">()</span>
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="part2_solution.png" alt="part2_solution.png" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org93d6f4f" class="outline-3">
+<h3 id="org93d6f4f"><span class="section-number-3">4.2</span> Discussion</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+The system is relatively robust to changes in total PLC concentration. As long
+as there is some PLC enzyme available (as little as 2.5 nM, in other words 25%
+of the original amount), the system continues to work, although without oscillation. 
+</p>
+
+<p>
+The system regains oscillation around 4.0 - 5.0 nM. The oscillation frequency is
+independent of the total PLC concentration. It remains constant at about one
+oscillation every 14 seconds (7 oscillations every 100 seconds, counted visually
+from the plots). The response time is affected by the total PLC amount. Amounts
+lower than 7.0 nM result in decreased response time.
+</p>
+
+<p>
+After 7.0 nM, higher amounts of total PLC do not affect the system much.
+Oscillation frequency remains roughly the same. There is a slight decrease in
+response time with very high PLC concentrations (e.g. PLC<sub>total</sub> &gt; 50.0).
+</p>
+
+<p>
+In summary, the system is relatively robust to an overconcentration of total
+PLC. It is more sensitive underconcentration, and there is a point (roughly
+around 2.5 nM, by inspection) where it will shut down.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Aybar C. Acar</p>
+<p class="date">Created: 2017-01-24 Tue 21:27</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
